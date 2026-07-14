@@ -1,7 +1,6 @@
 const catchAsync = require("../middlewares/catchAsyncErrors");
 const aiService = require("../services/ai.service")
 const FoodItem = require("../models/foodItem");
-const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 
 const Restaurant = require("../models/restaurant");
 const {analyzeReviewsWithAI}= require("../services/aiReviewAnalyzer")
@@ -73,8 +72,6 @@ exports.analyzeRestaurantReviews = catchAsync(async(req,res) =>{
           }
 
           const aiData = await analyzeReviewsWithAI(restaurant.reviews);
-
-          console.log("AI DATA:", aiData);
 
           restaurant.reviewSentiment = aiData.sentiment;
           restaurant.reviewSummaryBullets = aiData.summaryBullets;
@@ -158,10 +155,7 @@ exports.addReview = catchAsync(async (req, res) => {
     restaurant.reviewTopMentions =
       aiData.topMentions;
   } catch (error) {
-    console.log(
-      "AI Analysis Failed:",
-      error.message
-    );
+    console.error("AI review analysis failed:", error.message);
   }
 
   await restaurant.save();

@@ -56,16 +56,10 @@ ${reviewTexts.join("\n")}
     const content =
       response.data.choices[0].message.content;
 
-    console.log("AI RESPONSE:");
-    console.log(content);
-
     try {
       return JSON.parse(content);
     } catch (parseError) {
-      console.log(
-        "JSON Parse Failed:",
-        parseError.message
-      );
+      console.error("AI review JSON parse failed:", parseError.message);
 
       return {
         sentiment: "mixed",

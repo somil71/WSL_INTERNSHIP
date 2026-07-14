@@ -3,10 +3,8 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-console.log("KEY", process.env.STRIPE_SECRET_KEY);
 
 exports.processPayment = catchAsyncErrors(async (req, res, next) => {
-  console.log(req.body);
   const session = await stripe.checkout.sessions.create({
     customer_email: req.user.email,
     phone_number_collection: {
@@ -54,19 +52,6 @@ exports.processPayment = catchAsyncErrors(async (req, res, next) => {
   });
   res.status(200).json({ url: session.url });
 });
-
-// exports.paymentDetails = catchAsyncErrors(async (req, res, next) => {
-//   const session = await stripe.checkout.sessions.retrieve(
-//     "cs_test_b1wjqczdc5wwaNj5FjvxipLWeKZIvZQvsbC2OjfC5FEZw5vJ8aJbdMPRYC",
-//     {
-//       expand: ["customer"],
-//     }
-//   );
-// console.log(session);
-//   res.json({
-//     session,
-//   });
-// });
 
 // Send stripe API Key   =>   /api/v1/stripeapi
 exports.sendStripApi = catchAsyncErrors(async (req, res, next) => {
