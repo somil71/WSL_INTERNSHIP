@@ -12,6 +12,8 @@ A full-stack food ordering platform built with MongoDB, Express, React (Vite) an
 - Order placement, order history and order details
 - Email notifications (Nodemailer + Mailtrap)
 - AI-assisted dish description/tagging using Groq (Llama 3.1) — auto-generates description, tags, allergens and meal-timing suggestions for a dish
+- AI recipe generator (`/recipe-generator`) — turns a list of ingredients into a recipe via Groq
+- Forgot/reset password flow
 
 ## Tech Stack
 
@@ -77,3 +79,5 @@ Base path: `/api/v1`
 ## Note
 
 `backend/config/config.env` is intentionally excluded from version control since it holds real credentials (DB, Cloudinary, Stripe, Groq, JWT). Use `config.env.example` as a template.
+
+The AI features (dish description generation, review sentiment, recipe generator) require a valid `GROQ_API_KEY` from [console.groq.com](https://console.groq.com/keys). If those features return a 401, the key has expired/been revoked — generate a new one and update `config.env`.
