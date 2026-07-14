@@ -89,6 +89,25 @@ exports.analyzeRestaurantReviews = catchAsync(async(req,res) =>{
 
 
 
+exports.generateRecipe = catchAsync(async (req, res) => {
+  const { ingredients } = req.body;
+
+  if (!ingredients || !ingredients.trim()) {
+    return res.status(400).json({
+      success: false,
+      message: "ingredients are required",
+    });
+  }
+
+  const recipe = await aiService.generateRecipe({ ingredients });
+
+  res.status(200).json({
+    success: true,
+    recipe,
+    source: "Groq AI (LLaMA 3.1)",
+  });
+});
+
 exports.addReview = catchAsync(async (req, res) => {
   const { id } = req.params;
 

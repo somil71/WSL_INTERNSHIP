@@ -8,7 +8,7 @@ const Profile = () => {
 
   return (
     <>
-      {loading ? (
+      {loading || !user ? (
         <Loader />
       ) : (
         <>
@@ -18,7 +18,7 @@ const Profile = () => {
                 <figure className="avatar avatar-profile text-center mr-3">
                   <img
                     className="rounded-circle figure-img img-fluid"
-                    src={user.avatar.url}
+                    src={user.avatar?.url || "/images/images.png"}
                     alt={user.name}
                   />
                 </figure>

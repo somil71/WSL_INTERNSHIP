@@ -54,3 +54,28 @@ Return JSON in this EXACT format:
 
   return JSON.parse(response.data.choices[0].message.content);
 };
+
+exports.generateRecipe = async ({ ingredients }) => {
+  const response = await axios.post(
+    "https://api.groq.com/openai/v1/chat/completions",
+    {
+      model: "llama-3.1-8b-instant",
+      messages: [
+        {
+          role: "user",
+          content: `Create a simple recipe using ${ingredients}`,
+        },
+      ],
+      temperature: 0.4,
+      max_tokens: 500,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return response.data.choices[0].message.content;
+};

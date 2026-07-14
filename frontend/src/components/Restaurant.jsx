@@ -23,13 +23,12 @@ const Restaurant = ({ restaurant }) => {
     <div className="col-12 my-3">
     <div className="card restaurant-card p-3">
 
-  <Link to={`/eats/stores/${restaurant._id}/menus`}>
+  <Link to={`/eats/stores/${restaurant._id}/menus`} className="restaurant-card-link">
     <img
       className="restaurant-image"
       src={restaurant.images?.[0]?.url}
       alt={restaurant.name}
     />
-  </Link>
 
   <div className="restaurant-info">
 
@@ -54,10 +53,10 @@ const Restaurant = ({ restaurant }) => {
       </span>
     </div>
 
+  </div>
+  </Link>
+
     {restaurant.reviewSentiment && (
-  <>
-
-
     <button
       className="ai-btn"
       onClick={() => setShowAI(!showAI)}
@@ -66,12 +65,7 @@ const Restaurant = ({ restaurant }) => {
         ? "➖ Hide Summary"
         : "💬 View Review Summary"}
     </button>
-
-  
-  </>
 )}
-
-  </div>
 
     {showAI && (
       <div className="ai-insights-box">

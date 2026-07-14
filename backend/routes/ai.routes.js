@@ -36,6 +36,9 @@ router.put(
   aiController.addReview
 );
 
+// AI recipe generator (from ingredients)
+router.post("/recipe/generate", aiController.generateRecipe);
+
 
 
 module.exports = router;

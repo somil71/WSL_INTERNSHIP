@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -127,7 +127,7 @@ const OrderDetails = () => {
                       </div>
 
                       <div className="col-5 col-lg-5">
-                        <Link to="#">{item.name}</Link>
+                        {item.name}
                       </div>
 
                       <div className="col-4 col-lg-2 mt-4 mt-lg-0">
