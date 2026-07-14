@@ -46,6 +46,7 @@ FoodProject/
 cd backend
 npm install
 cp config/config.env.example config/config.env   # fill in your own secrets
+npm run seeder   # imports 8 restaurants, 8 menus, 85 food items from backend/data/
 npm run dev
 ```
 Runs on `http://localhost:4000`.
