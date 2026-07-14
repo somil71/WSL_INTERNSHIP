@@ -14,6 +14,7 @@ import Loader from "./layout/Loader";
 import Message from "./Message";
 import { useDispatch, useSelector } from "react-redux";
 import CountRestaurant from "./CountRestaurant";
+import Hero from "./Hero";
 import { useParams } from "react-router-dom";
 
 const Home = () => {
@@ -128,6 +129,7 @@ const Home = () => {
 
   return (
     <>
+      <Hero />
       <CountRestaurant />
       {restaurantsLoading ? (
         <Loader />
@@ -135,7 +137,7 @@ const Home = () => {
         <Message variant="danger"> {restaurantsError}</Message>
       ) : (
         <>
-          <section>
+          <section id="restaurants">
             <div className="sort">
               <button className="sort_veg p-3" onClick={handleToggleVegOnly}>
                 {showVegOnly ? "Show All" : "Pure Veg"}
