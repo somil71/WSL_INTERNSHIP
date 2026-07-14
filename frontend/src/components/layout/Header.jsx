@@ -43,37 +43,33 @@ const Header = () => {
     <>
       <nav className="navbar row sticky-top">
         {/* logo */}
-        <div className="col-12 col-md-3">
+        <div className="col-12 col-md-3 nav-logo-col">
           <Link to="/">
             <img src="/images/logo.webp" alt="logo" className="logo" />
           </Link>
         </div>
 
         {/* search */}
-        <div className="col-12 col-md-6 mt-2 mt-md-0">
+        <div className="col-12 col-md-6 mt-2 mt-md-0 nav-search-col">
           <Search />
         </div>
 
         {/* right side */}
-        <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
-          <Link to="/recipe-generator" style={{ textDecoration: "none" }}>
-            <span className="ml-3">Recipe AI</span>
+        <div className="col-12 col-md-3 mt-4 mt-md-0 nav-actions-col">
+          <Link to="/recipe-generator" className="nav-link-item">
+            Recipe AI
           </Link>
 
-          <Link to="/cart" style={{ textDecoration: "none" }}>
-            <span className="ml-3" id="cart">
-              Cart
-            </span>
-            <span className="ml-1" id="cart_count">
-              {cartItems.length}
-            </span>
+          <Link to="/cart" className="nav-link-item">
+            Cart
+            <span id="cart_count">{cartItems.length}</span>
           </Link>
 
           {user ? (
-            <div className="ml-4 dropdown d-inline" ref={menuRef}>
+            <div className="dropdown d-inline-block" ref={menuRef}>
               <button
                 type="button"
-                className="btn dropdown-toggle text-white mr-4"
+                className="btn user-menu-toggle dropdown-toggle text-white"
                 id="dropDownMenuButton"
                 onClick={() => setMenuOpen((open) => !open)}
               >
@@ -116,7 +112,7 @@ const Header = () => {
             </div>
           ) : (
             !loading && (
-              <Link to="/users/login" className="btn ml-4" id="login_btn">
+              <Link to="/users/login" className="nav-link-item nav-login-btn" id="login_btn">
                 Login
               </Link>
             )

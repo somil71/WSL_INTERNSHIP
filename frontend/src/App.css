@@ -37,53 +37,95 @@ body {
 
 /* Nav */
 
-.logo {
-  width: 40%;
-  margin-left: 20%;
+nav.row {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 nav {
-   background-color: #056a3a;
+  background-color: #056a3a;
   padding: 1rem 1rem;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  align-items: center;
+}
+
+.nav-logo-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.nav-search-col {
+  display: flex;
+  align-items: center;
+}
+
+.nav-search-col form {
+  width: 100%;
+}
+
+.nav-actions-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
 }
 
 .web_logo {
   padding: 1rem;
   color: #000;
   font-size: 30px;
-  
- 
-}
-
-#search_btn {
-  margin-left: -100%;
 }
 
 .input-group {
-  width: 90%;
-  margin-right: 35%;
+  width: 100%;
+  flex-wrap: nowrap;
 }
 
 #search_field {
   height: 2.4rem;
-  padding: 1rem;
-  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem 0 0 1rem;
+  border-right: none;
+}
+
+#search_btn {
+  border-radius: 0 1rem 1rem 0;
+  padding: 0 1.2rem;
+}
+
+.nav-link-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: white;
+  font-size: 1.05rem;
+  text-decoration: none;
+}
+
+.nav-link-item:hover {
+  color: #f1f1f1;
+  text-decoration: none;
 }
 
 #login_btn {
-  padding: 1.5rem 1.8rem;
-  font-family: calibri;
-  font-size: 2rem;
-  margin-top: -3%;
-
-  color: white;
+  padding: 0.5rem 1.4rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 2rem;
 }
 #login_btn:hover {
   background-color: rgb(243, 235, 223);
   color: rgb(8, 8, 8);
+  border-color: rgb(243, 235, 223);
 }
 
 #view_btn {
@@ -92,19 +134,20 @@ nav {
   font-family: calibri;
 }
 
-#cart {
-  font-size: 2rem;
-  font-family: calibri;
-  color: white;
+.user-menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 #cart_count {
   background-color: rgb(243, 235, 223);
-  padding: 0.2rem 0.5rem;
+  padding: 0.15rem 0.5rem;
   border-radius: 0.2rem;
   color: rgb(2, 2, 2);
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 /* Home page */
@@ -116,7 +159,7 @@ nav {
 .food-image {
   width: 100%;
   height: 220px;
-  object-fit:fill;
+  object-fit: cover;
 }
 
 .restaurant-card {
@@ -156,6 +199,25 @@ nav {
 .restaurant-card-link:hover {
   text-decoration: none;
   color: inherit;
+}
+
+@media (max-width: 576px) {
+  .restaurant-card,
+  .restaurant-card-link {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .restaurant-image {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+.recipe-generator {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .recipe-output {
